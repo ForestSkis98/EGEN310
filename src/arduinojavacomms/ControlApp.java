@@ -1,8 +1,10 @@
 package arduinojavacomms;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.io.File;
 
 @SuppressWarnings("serial")
 public class ControlApp extends JPanel {
@@ -15,10 +17,16 @@ public class ControlApp extends JPanel {
     }
 
     public static void main(String[] args) {
-        JFrame frame = new JFrame("EGEN Control App");
+        JFrame frame = new JFrame("EGEN 310 Control App");
         ControlApp keyboardExample = new ControlApp();
+        //frame.add(keyboardExample);
+        frame.setSize(512, 512);
+        try {
+            frame.setContentPane(new JLabel((new ImageIcon(ImageIO.read(new File("src/arduinojavacomms/Control Image.png"))))));
+        } catch(Exception exception) {
+            exception.printStackTrace();
+        }
         frame.add(keyboardExample);
-        frame.setSize(200, 200);
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
